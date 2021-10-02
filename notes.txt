@@ -1,0 +1,9 @@
+//parent routes tested
+
+//teacher route tested
+
+// admin routes tested
+
+"url": "mongodb+srv://sangeeta:sangeeta@cluster0.36fka.mongodb.net/helpmetutors-server?retryWrites=true&w=majority",
+
+ "url": "mongodb://localhost:27017/helpmetutors-server",

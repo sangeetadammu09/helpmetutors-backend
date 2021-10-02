@@ -1,0 +1,37 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server",
+    "debug": "nodemon --inspect server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangeeta0912/backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sangeeta0912/backend/issues"
+  },
+  "homepage": "https://github.com/sangeeta0912/backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "exceljs": "^4.2.1",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.11",
+    "pdfkit": "^0.11.0",
+    "read-excel-file": "^5.2.6"
+  }
+}
