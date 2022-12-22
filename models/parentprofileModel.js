@@ -7,13 +7,12 @@ const parentprofileSchema = mongoose.Schema({
     lookingfor:{type:String, required:true},
     grade:{type:String, required:true},
     subjects:{type:String, required:true},
-    details:{type:String, required:true},
+    details:{type:String},
     modeofteaching:{type:String, required:true},
     gender:{type:String, required:true},
     budget:{type:String, required:true},
     budgettype:{type:String, required:true},
     document:{type:String},
-    idproof:{type:String},
     creation_dt:{type:Date,default: Date.now}
 })
 

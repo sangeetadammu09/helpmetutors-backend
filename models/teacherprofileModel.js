@@ -7,13 +7,16 @@ const teacherprofileSchema = mongoose.Schema({
     qualification:{type:String, required:true},
     teachingexp:{type:String, required:true},
     about:{type:String, required:true},
-    modeofteaching:{type:String, required:true},
+    modeofteaching:{type:Array, required:true},
     timing:{type:String, required:true},
     charge:{type:String, required:true},
-    image:{type:String,required:true},
-    uploadresume:{type:String},
-    idproof:{type:String},
+    chargeType:{type:String, required:true},
+    subjects:{type:String, required:true},
+    image:{type:String},
+    document:{type:String},
     creation_dt:{type:Date,default: Date.now}
+
+
 })
 
 

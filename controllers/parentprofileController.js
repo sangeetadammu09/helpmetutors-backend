@@ -11,19 +11,18 @@ exports.parentcreateprofile = async(req,res)=>{
         lookingfor: Joi.string().required(),
         grade: Joi.string().required(),
         subjects: Joi.string().required(),
-        details: Joi.string().required(),
+        details: Joi.optional(),
         modeofteaching: Joi.string().required(),
         gender: Joi.string().required(),
-        budget: Joi.string().required(),
+        budget: Joi.number().required(),
         budgettype: Joi.string().required(),
-        document: Joi.string(),
-        idproof: Joi.string().required()
+        document: Joi.optional()
     })
        try{
         const parentprofile = await schema.validateAsync(req.body);
         await  ParentProfile.create(req.body, (err,data)=>{
              if(err)throw err
-              return res.status(200).json({ 'message': 'Parent profile created successfully', 'newparent': data });
+              return res.status(200).json({ 'message': 'Parent profile created successfully', 'newparent': data, 'Status':200 });
           })
         
 

@@ -10,19 +10,20 @@ exports.teachercreateprofile = async(req,res)=>{
         location: Joi.string().required(),
         about: Joi.string().required(),
         teachingexp: Joi.string().required(),
+        subjects: Joi.string().required(),
         qualification: Joi.string().required(),
-        modeofteaching: Joi.string().required(),
+        modeofteaching: Joi.array().required(),
         timing: Joi.string().required(),
         charge: Joi.string().required(),
-        image:  Joi.string().required(),
-        uploadresume: Joi.string().required(),
-        idproof: Joi.string().required(),
+        image:  Joi.optional(),
+        chargeType: Joi.string().required(),
+        document: Joi.optional()
     })
        try{
         const teacherprofile = await schema.validateAsync(req.body);
         await  TeacherProfile.create(req.body, (err,data)=>{
              if(err)throw err
-              return res.status(200).json({ 'message': 'Teacher profile created successfully', 'newteacher': data });
+              return res.status(200).json({ 'Status':200, 'message': 'Teacher profile created successfully', 'newteacher': data });
           })
         
 
