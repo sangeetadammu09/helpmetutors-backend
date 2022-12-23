@@ -23,7 +23,7 @@ exports.teachercreateprofile = async(req,res)=>{
         const teacherprofile = await schema.validateAsync(req.body);
         await  TeacherProfile.create(req.body, (err,data)=>{
              if(err)throw err
-              return res.status(200).json({ 'Status':200, 'message': 'Teacher profile created successfully', 'newteacher': data });
+              return res.status(200).json({ 'Status':200, 'message': 'Teacher profile created successfully', 'newteacher': data , status : 200});
           })
         
 

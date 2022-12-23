@@ -22,7 +22,7 @@ exports.parentcreateprofile = async(req,res)=>{
         const parentprofile = await schema.validateAsync(req.body);
         await  ParentProfile.create(req.body, (err,data)=>{
              if(err)throw err
-              return res.status(200).json({ 'message': 'Parent profile created successfully', 'newparent': data, 'Status':200 });
+              return res.status(200).json({ 'message': 'Parent profile created successfully', 'newparent': data, 'status':200 });
           })
         
 

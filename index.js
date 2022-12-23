@@ -3,8 +3,10 @@ const express = require('express');
 //const connection = require('./config/mysqldb')
 const cors = require('cors');
 const router = express.Router();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 var app = express();
+
+const path = require('path');
 
 //routes
 var contactRoute = require ('./routes/contactRoute');
@@ -19,6 +21,10 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerDocs = require("./swagger.json")
 
 //middlewares
+app.use(express.static('public'));
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'public/index.html'));
+})
 app.use('/api-docs/helpmetutors',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
 app.use(express.json());
 app.use(express.urlencoded({ limit: "50mb", parameterLimit: 500000000, extended:true }));
@@ -28,6 +34,7 @@ app.use('/contact', contactRoute);
 app.use('/parent',parentRoute)
 app.use('/teacher',teacherRoute)
 app.use('/admin',adminRoute)
+
 
 
 //connection to db
