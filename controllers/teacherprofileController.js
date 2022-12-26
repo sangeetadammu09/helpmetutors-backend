@@ -37,7 +37,7 @@ exports.listofteachers = async(req,res)=>{
     try {
         await TeacherProfile.find((err, data)=>{
             if(err)throw err
-            return res.status(200).json({ 'message': 'Teachers Fetched Successfully', 'listofteachers': data });
+            return res.status(200).json({ 'message': 'Teachers Fetched Successfully', 'listofteachers': data, status : 200});
             
         })
        
@@ -107,3 +107,27 @@ exports.deleteteacher = async(req,res)=>{
         return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
     }
 }
+
+//find teacher
+
+exports.appliedteacherprofile = async(req,res)=>{
+    // console.log('request',req.body)
+     try {
+         await TeacherProfile.findOne({ temail: req.body.email },(err, data)=>{
+             if(err)throw err
+        
+             //if a user was not found
+             if (!data) {
+                  return res.status(400).json({ 'message': `${req.body.email} is not found. Please register your details`, 'appliedteacher': data, status:400 });
+                //  return next(err);
+                 
+             } else {
+                 //teacher found
+                 return res.status(200).json({ 'message': `Teacher with ${req.body.email} fetched successfully`, 'appliedteacher': data, status:200 });
+             }
+         })
+        
+     } catch (err) {
+         return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
+     }
+ }

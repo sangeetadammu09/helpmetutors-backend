@@ -9,10 +9,11 @@ router.post('/register',teacherloginController.teacherregister);
 
 router.post('/login',teacherloginController.teacherlogin);
 
-//teacher profile
 router.post('/form',teacherprofileController.teachercreateprofile);
 
-router.get('/listofteachers',  teacherprofileController.listofteachers);
+router.post('/applyjob',teacherprofileController.appliedteacherprofile);
+
+router.get('/listofteachers', teacherprofileController.listofteachers);
 
 router.get('/:id', teacherprofileController.singleteacher)
 

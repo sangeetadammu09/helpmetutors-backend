@@ -72,6 +72,8 @@ exports.mailParent = async(req,res)=>{
                 <p>Grade: ${req.body.grade}</p>
                 <p>Subjects: ${req.body.subjects}</p>
                 <p>Details:${req.body.details}</p>
+                <p>No of days/weekly:${req.body.days}</p>
+                <p>No of hours/daily:${req.body.time}</p>
                 <p>Mode of Teaching:${req.body.modeofteaching}</p>
                 <p>Gender: ${req.body.gender}</p>
                 <p>Budget: ${req.body.budget}</p>
@@ -111,10 +113,6 @@ exports.mailTeacher = async(req,res)=>{
         pass: 'szejocgpuqmjises'
       }
       });
-
-
-    
-
     var mailOptions = { 
                 from: 'sangeetadammu12@gmail.com',
                 to:  'helpmetutors123@gmail.com',
@@ -154,5 +152,60 @@ exports.mailTeacher = async(req,res)=>{
    }catch(err){
     return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
    }
+}
+
+
+//applied Teacher
+//mail teacher
+exports.appliedTeacher = async(req,res)=>{
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    secure: true,
+    port: 465,
+    auth: {
+      user: 'sangeetadammu12@gmail.com',
+      pass: 'szejocgpuqmjises'
+    }
+    });
+  var mailOptions = { 
+              from: 'sangeetadammu12@gmail.com',
+              to:  'helpmetutors123@gmail.com',
+
+                   subject: `Interested Teacher: ${req.body.teacheDetails.tname} interested in ${req.body.appliedFor}`,
+                      html:`<h3>Teacher details</h3>
+                      <p>Email: ${req.body.teacheDetails.temail}</p>
+                      <p>Contact:${req.body.teacheDetails.contact}</p>
+                      <p>Location:${req.body.teacheDetails.location}</p>
+                      <p>Qualification: ${req.body.teacheDetails.qualification}</p>
+                      <p>Teaching Experience: ${req.body.teacheDetails.teachingexp}</p>
+                      <p>Mode of Teaching:${req.body.teacheDetails.modeofteaching}</p>
+                      <p>Specialization:${req.body.teacheDetails.subjects}</p>
+                      <p>Timing: ${req.body.teacheDetails.timing} </p>
+                      <p>About: ${req.body.teacheDetails.about}</p> 
+                      <p>Charge: ${req.body.teacheDetails.charge}</p>
+                      <p>Charge Type: ${req.body.teacheDetails.chargeType}</p>
+                      <p>ID Proof: ${req.body.teacheDetails.document}</p>
+                      <hr/> 
+                      <h5>Respective Parent Details are : ${req.body.parentDetails}</h5>`
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.send('Sent Successfully')
+      }
+    });
+ try{
+  await  Contact.create(req.body, (err,data)=>{
+       if(err)throw err
+        return res.status(200).json({ 'message': 'Teacher mail sent successfully', 'newTeacher': data, status : 200 });
+    })
+  
+
+ }catch(err){
+  return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
+ }
 }
 
