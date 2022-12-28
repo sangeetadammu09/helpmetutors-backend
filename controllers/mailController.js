@@ -7,13 +7,13 @@ exports.mailContact = async(req,res)=>{
           secure: true,
           port: 465,
           auth: {
-            user: 'sangeetadammu12@gmail.com',
-            pass: 'szejocgpuqmjises'
+            user: 'helpmetutors27@gmail.com',
+            pass: 'ofynclanjfdphyix'
           }
           });
 
         var mailOptions = { 
-                    from: 'sangeetadammu12@gmail.com',
+                    from: 'helpmetutors27@gmail.com',
                     to:  'helpmetutors123@gmail.com',
 
             subject: `Contact details: ${req.body.name}`,
@@ -46,20 +46,19 @@ exports.mailContact = async(req,res)=>{
 }
 
 // mail parent
-
 exports.mailParent = async(req,res)=>{
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       secure: true,
       port: 465,
       auth: {
-        user: 'sangeetadammu12@gmail.com',
-        pass: 'szejocgpuqmjises'
+        user: 'helpmetutors27@gmail.com',
+        pass: 'ofynclanjfdphyix'
       }
       });
 
     var mailOptions = { 
-                from: 'sangeetadammu12@gmail.com',
+                from: 'helpmetutors27@gmail.com',
                 to:  'helpmetutors123@gmail.com',
 
                subject: `New Parent Registered: ${req.body.pname}`,
@@ -101,7 +100,6 @@ exports.mailParent = async(req,res)=>{
    }
 }
 
-
 //mail teacher
 exports.mailTeacher = async(req,res)=>{
     var transporter = nodemailer.createTransport({
@@ -109,12 +107,12 @@ exports.mailTeacher = async(req,res)=>{
       secure: true,
       port: 465,
       auth: {
-        user: 'sangeetadammu12@gmail.com',
-        pass: 'szejocgpuqmjises'
+        user: 'helpmetutors27@gmail.com',
+        pass: 'ofynclanjfdphyix'
       }
       });
     var mailOptions = { 
-                from: 'sangeetadammu12@gmail.com',
+                from: 'helpmetutors27@gmail.com',
                 to:  'helpmetutors123@gmail.com',
 
                      subject: `New Teacher Registered: ${req.body.tname}`,
@@ -154,21 +152,19 @@ exports.mailTeacher = async(req,res)=>{
    }
 }
 
-
 //applied Teacher
-//mail teacher
 exports.appliedTeacher = async(req,res)=>{
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     secure: true,
     port: 465,
     auth: {
-      user: 'sangeetadammu12@gmail.com',
-      pass: 'szejocgpuqmjises'
+      user: 'helpmetutors27@gmail.com',
+      pass: 'ofynclanjfdphyix'
     }
     });
   var mailOptions = { 
-              from: 'sangeetadammu12@gmail.com',
+              from: 'helpmetutors27@gmail.com',
               to:  'helpmetutors123@gmail.com',
 
                    subject: `Interested Teacher: ${req.body.teacheDetails.tname} interested in ${req.body.appliedFor}`,

@@ -22,7 +22,7 @@ const swaggerDocs = require("./swagger.json")
 
 //middlewares
 app.use(express.static('public'));
-app.get('*',(req,res)=>{
+app.get('/',(req,res)=>{
   res.sendFile(path.join(__dirname,'public/index.html'));
 })
 app.use('/api-docs/helpmetutors',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
