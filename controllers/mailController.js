@@ -69,6 +69,7 @@ exports.mailParent = async(req,res)=>{
                 <p>Location:${req.body.location}</p>
                 <p>Looking for: ${req.body.lookingfor}</p>
                 <p>Grade: ${req.body.grade}</p>
+                <p>Board: ${req.body.board}</p>
                 <p>Subjects: ${req.body.subjects}</p>
                 <p>Details:${req.body.details}</p>
                 <p>No of days/weekly:${req.body.days}</p>

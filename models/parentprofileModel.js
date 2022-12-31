@@ -6,6 +6,7 @@ const parentprofileSchema = mongoose.Schema({
     location:{type:String, required:true},
     lookingfor:{type:String, required:true},
     grade:{type:String, required:true},
+    board:{type:String, required:true},
     subjects:{type:String, required:true},
     details:{type:String},
     modeofteaching:{type:String, required:true},
