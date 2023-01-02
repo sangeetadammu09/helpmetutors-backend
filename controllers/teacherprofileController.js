@@ -14,6 +14,8 @@ exports.teachercreateprofile = async(req,res)=>{
         qualification: Joi.string().required(),
         modeofteaching: Joi.array().required(),
         timing: Joi.string().required(),
+        vehicle: Joi.string().required(),
+        preferredlocation: Joi.optional(),
         charge: Joi.string().required(),
         image:  Joi.optional(),
         chargeType: Joi.string().required(),

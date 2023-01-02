@@ -9,6 +9,8 @@ const teacherprofileSchema = mongoose.Schema({
     about:{type:String, required:true},
     modeofteaching:{type:Array, required:true},
     timing:{type:String, required:true},
+    vehicle:{type:String, required:true},
+    preferredlocation:{type:String},
     charge:{type:String, required:true},
     chargeType:{type:String, required:true},
     subjects:{type:String, required:true},

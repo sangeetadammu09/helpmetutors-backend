@@ -76,8 +76,7 @@ exports.mailParent = async(req,res)=>{
                 <p>No of hours/daily:${req.body.time}</p>
                 <p>Mode of Teaching:${req.body.modeofteaching}</p>
                 <p>Gender: ${req.body.gender}</p>
-                <p>Budget: ${req.body.budget}</p>
-                <p>Budget1: ${req.body.budgettype}</p>
+                <p>Budget: ${req.body.budget} ${req.body.budgettype}</p>
                 <p>Document:${req.body.document}</p>`
       };
       
@@ -127,9 +126,10 @@ exports.mailTeacher = async(req,res)=>{
                         <p>Mode of Teaching:${req.body.modeofteaching}</p>
                         <p>Specialization:${req.body.subjects}</p>
                         <p>Timing: ${req.body.timing} </p>
+                        <p>Have Vehicle: ${req.body.vehicle} </p>
+                        <p>Five Preferred Locations: ${req.body.preferredlocation} </p>
                         <p>About: ${req.body.about}</p> 
-                        <p>Charge: ${req.body.charge}</p>
-                        <p>Charge Type: ${req.body.chargeType}</p>
+                        <p>Charge: ${req.body.charge} ${req.body.chargeType}</p>
                         <p>ID Proof: ${req.body.document}</p>`
       };
       
@@ -179,8 +179,7 @@ exports.appliedTeacher = async(req,res)=>{
                       <p>Specialization:${req.body.teacheDetails.subjects}</p>
                       <p>Timing: ${req.body.teacheDetails.timing} </p>
                       <p>About: ${req.body.teacheDetails.about}</p> 
-                      <p>Charge: ${req.body.teacheDetails.charge}</p>
-                      <p>Charge Type: ${req.body.teacheDetails.chargeType}</p>
+                      <p>Charge: ${req.body.teacheDetails.charge} ${req.body.teacheDetails.chargeType}</p>
                       <p>ID Proof: ${req.body.teacheDetails.document}</p>
                       <hr/> 
                       <h5>Respective Parent Details are : ${req.body.parentDetails}</h5>`
