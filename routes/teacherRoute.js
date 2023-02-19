@@ -13,7 +13,11 @@ router.post('/form',teacherprofileController.teachercreateprofile);
 
 router.post('/applyjob',teacherprofileController.appliedteacherprofile);
 
+router.post('/search',teacherprofileController.searchTeacher);
+
 router.get('/listofteachers', teacherprofileController.listofteachers);
+
+router.post('/listofteachersbypage', teacherprofileController.listofteachersbypage);
 
 router.get('/:id', teacherprofileController.singleteacher)
 

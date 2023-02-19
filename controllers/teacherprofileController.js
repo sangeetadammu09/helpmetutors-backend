@@ -39,6 +39,9 @@ exports.listofteachers = async(req,res)=>{
     try {
         await TeacherProfile.find((err, data)=>{
             if(err)throw err
+            data.sort((a,b)=>{
+                return new Date(b.creation_dt) - new Date(a.creation_dt);
+              });
             return res.status(200).json({ 'message': 'Teachers Fetched Successfully', 'listofteachers': data, status : 200});
             
         })
@@ -48,8 +51,27 @@ exports.listofteachers = async(req,res)=>{
     }
 }
 
-//get single teacher
 
+//list of teachers by page
+exports.listofteachersbypage = async(req,res)=>{
+       console.log(req.body,'000000000')
+    try {
+        await TeacherProfile.find({},(err, data)=>{
+
+            if(err)throw err
+            data.sort((a,b)=>{
+                return new Date(b.creation_dt) - new Date(a.creation_dt);
+              });
+            return res.status(200).json({ 'message': 'Teachers Fetched Successfully By Pagination', 'listofteachers': data, status : 200});
+            
+        })
+       
+    } catch (err) {
+        return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
+    }
+}
+
+//get single teacher
 exports.singleteacher = async(req,res)=>{
    // console.log(req.params.id)
     try {
@@ -65,7 +87,6 @@ exports.singleteacher = async(req,res)=>{
 }
 
 //update single teacher by teacher id
-
 exports.updateteacher = async (req,res)=>{
     try{
         await TeacherProfile.findByIdAndUpdate(req.params.id,{
@@ -111,7 +132,6 @@ exports.deleteteacher = async(req,res)=>{
 }
 
 //find teacher
-
 exports.appliedteacherprofile = async(req,res)=>{
     // console.log('request',req.body)
      try {
@@ -120,12 +140,38 @@ exports.appliedteacherprofile = async(req,res)=>{
         
              //if a user was not found
              if (!data) {
-                  return res.status(400).json({ 'message': `${req.body.email} is not found. Please register your details`, 'appliedteacher': data, status:400 });
+                  return res.status(201).json({ 'message': `${req.body.email} is not found. Please register your details`, 'appliedteacher': data, status:201 });
                 //  return next(err);
                  
              } else {
                  //teacher found
                  return res.status(200).json({ 'message': `Teacher with ${req.body.email} fetched successfully`, 'appliedteacher': data, status:200 });
+             }
+         })
+        
+     } catch (err) {
+         return res.status(500).json({ 'message': 'something went wrong', 'err': err.message })
+     }
+ }
+
+//filter registered teacher
+exports.searchTeacher = async(req,res)=>{
+     console.log('request',req.body)
+     try {
+         await TeacherProfile.find({ tname: req.body.name, modeofteaching: req.body.modeofteaching},(err, data)=>{
+            console.log(data)
+             if(err)throw err
+            data.sort((a,b)=>{
+                    return new Date(b.creation_dt) - new Date(a.creation_dt);
+                  });
+             //if no teacher found
+             if (!data) {
+                  return res.status(201).json({ 'message': `No data found`, 'filteredteachers': data, status:201 });
+                //  return next(err);
+                 
+             } else {
+                 //teachers found
+                 return res.status(200).json({ 'message': `Teachers are filtered successfully`, 'filteredteachers': data, status:200 });
              }
          })
         

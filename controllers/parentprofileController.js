@@ -40,6 +40,9 @@ exports.listofparents = async(req,res)=>{
     try {
         await ParentProfile.find((err, data)=>{
             if(err)throw err
+            data.sort((a,b)=>{
+                return new Date(b.creation_dt) - new Date(a.creation_dt);
+              });
             return res.status(200).json({ 'message': 'Parents Fetched Successfully', 'listofparents': data });
             
         })
